@@ -76,11 +76,11 @@ def distance_to_nearest(points, data):
     s_distances = np.asarray(s_distances)
     return s_distances
 
+
 if __name__ == '__main__':
     # Taken from best and worst scorer League of Conservation Voters.
     bad_guys = ['lucas','cole','nunes','mccarthy','rohrabacher','issa','turner','gohmert','wicker','cochran']
     good_guys = ['thompson','welch','blumenaver','mcnerney','eshoo','velazquez','lowey','pallone','grijalva','pelosi']
-
     # Read in data
     df = read_data()
 
@@ -90,6 +90,7 @@ if __name__ == '__main__':
     # Experiment with PCA
     pca = PCA(n_components=4)
     reduced = pca.fit_transform(votes)
+
     # plot_PCA_reduction(reduced[:,:3], with_labels=True, labels=df['party'])
 
     # New dataframe
@@ -187,3 +188,4 @@ if __name__ == '__main__':
     top_twelve = sorted(sway_targets, key=lambda x: x[-1])[:12]
     for person in top_twelve:
         print person
+

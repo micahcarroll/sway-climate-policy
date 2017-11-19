@@ -1,0 +1,35 @@
+---
+title: "Sway"
+output: 
+  html_document:
+    keep_md: TRUE
+---
+
+###                         Similarity Graph
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(ggplot2)
+library(dplyr)
+library(plotly)
+setwd('/Users/thanh/Desktop/BercHackathon')
+```
+
+```{r echo = FALSE, message = FALSE, warning=FALSE}
+df <- read.csv('pca_results.csv')
+
+temp <-df
+red <- temp$party == "R"
+red <- as.integer(red)
+zeroV <- rep(0, times=dim(df)[1])
+
+
+
+df$score <- -1*(df$score)
+plot_ly(data=temp, x = ~score, y = 0, mode = "markers", color = red, type='scatter', text= ~paste("Name:", X, ",",state)) %>%
+  layout(title='Similar Politician(Rep:1, Dem:0)') %>%
+  config(showLink=TRUE)
+temp$party <- red
+temp$zero <- zeroV
+write.csv(temp, file="cleaned.csv", row.names = FALSE)
+```
+
+
