@@ -1,6 +1,3 @@
 [submodule "python-docs-hello-world"]
 	path = python-docs-hello-world
 	url = https://github.com/Azure-Samples/python-docs-hello-world
-[submodule "html-docs-hello-world"]
-	path = html-docs-hello-world
-	url = https://github.com/Azure-Samples/html-docs-hello-world.git
